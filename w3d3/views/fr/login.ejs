@@ -1,0 +1,23 @@
+<%- include('partials/_head.ejs') %>
+<section>
+	<h1>
+		<span>La page super secrète des voleurs!</span>
+	</h1>
+</section>
+<section>
+  <% if(error){ %>
+    <%- include("partials/_error.ejs", error) %>
+  <% } %>
+
+	<form action="/login" method="POST">
+    <label for="email">Votre courriel</label>
+    <input type="email" name="email" placeholder="Votre courriel" id="email">
+    <label for="password">Votre mot de passe</label>
+    <input type="password" name="password" placeholder="Votre mot de passe" id="password">
+    <button>Voir le coffre-fort</button>
+  </form>
+</section>
+	
+</body>
+
+</html>

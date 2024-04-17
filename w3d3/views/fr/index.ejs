@@ -1,0 +1,32 @@
+<%- include('partials/_head.ejs') %>
+<section>
+	<h1>
+		<span>La page super secrète des voleurs!</span>
+	</h1>
+		<h2>
+			<% if(thief){ %>
+			Bienvenue <%= thief.name %>!
+			<% } %>
+		</h2>
+</section>
+<section>
+	<main>
+		<div class="door">
+		</div>
+		<% if(thief){ %>
+		<img src="<%= thief.imagePath %>" alt="">
+		<% } %>
+		</main>
+		</section>
+	<section>
+			<% if(!thief){ %>
+				<a href="/login">Connecter au coffre-fort</a>
+				<a href="/register">Créer un coffre-fort</a>
+			<% } %>
+			<% if(thief){ %>
+				<a href="/logout">Fermer le coffre-fort</a>
+			<% } %>
+	</section>
+	</body>
+
+	</html>
