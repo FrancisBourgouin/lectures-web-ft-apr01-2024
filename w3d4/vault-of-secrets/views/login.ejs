@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vault of Secrets</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include("_header") %>
+    <form action="/login" method="POST">
+      <input type="email" placeholder="Enter your email" name="email">
+      <input type="password" placeholder="Enter your password" name="password">
+      <button>View vault entry</button>
+    </form>
+  </body>
+</html>

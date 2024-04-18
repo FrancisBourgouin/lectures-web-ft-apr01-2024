@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vault of Secrets</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include("_header") %>
+    
+    <% if(!user){ %>
+      <p>Welcome!</p>
+      <p>Please login or register to see your secret</p>
+    <% } %>
+    
+    <% if(user){ %>
+      <p>Welcome <%= user.name %>!</p>
+      <p>Your terrible secret is: <%= user.secret %></p>
+    <% } %>
+  </body>
+</html>
