@@ -1,0 +1,121 @@
+html, body{
+  margin:0;
+}
+
+#root {
+  // max-width: 1280px;
+  margin: 0;
+  // padding: 2rem;
+  text-align: center;
+  font-size:24px;
+}
+
+.Header{
+  background-color: #b0b;
+  padding:2em 1em;
+
+  h1{
+    margin:0;
+  }
+
+  animation: glow 10s ease-in-out infinite alternate-reverse;
+  @keyframes glow{
+    0%{background-color: #b0b;}
+    100%{background-color: #333;}
+  }
+}
+
+.ReplyForm{
+  padding:1em;
+  background-color: #bada55;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:1em;
+
+
+  input,button{
+    font-size: 1em;
+    padding:1em;
+  }
+
+  input{
+    width:100%;
+    max-width:60ch;
+  }
+
+}
+
+.ReplyListItem{
+  padding:1em;
+  display: grid;
+
+  grid-template-columns: min-content auto auto;
+  grid-template-rows:auto auto;
+
+  grid-template-areas: 
+    "profile text text"
+    "username . likes"
+  ;
+
+  &:nth-child(2n + 1){
+    background-color: #26e2b0;
+    color:black;
+  }
+
+  img{
+    grid-area: profile;
+    width:6em;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+  h1{
+    grid-area: username;
+    font-size: 1.2em;
+    margin:0;
+    text-align: center;
+  }
+  div{
+    grid-area: likes;
+    display:flex;
+    gap:0.5em;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  p{
+    grid-area: text;
+    padding:1em;
+  }
+}
+
+.ReplyList{
+  padding:0;
+  margin:1em auto;
+
+  max-width:100ch;
+
+
+}
+
+.ForumPost{
+  h1{
+    
+    max-width:80ch;
+    margin:0 auto;
+  }
+  h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:1em;
+  }
+  img{
+    grid-area: profile;
+    width:3em;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+}

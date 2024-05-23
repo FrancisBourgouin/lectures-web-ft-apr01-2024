@@ -2,6 +2,13 @@ const express = require("express");
 const { authenticateUser, createUser, getUserByEmail } = require("../helpers/userHelpers");
 const router = express.Router();
 
+
+const get = (parameter, action) => {
+  // CONVERT / MANIPULATE REQUEST FROM USER
+
+  return action(parameter.req, parameter.res)
+}
+
 /* GET home page. */
 router.get("/", function (req, res) {
   const {email} = req.session
@@ -17,12 +24,16 @@ router.get("/", function (req, res) {
   return res.render("index", templateVars);
 });
 
-router.get("/login", function (req, res) {
+const renderLoginPage = function (req, res) {
   return res.render("login");
-});
+}
+
+router.get("/login", renderLoginPage);
+
 router.get("/register", function (req, res) {
   return res.render("register");
 });
+
 router.get("/dashboard", function (req, res) {
   return res.render("dashboard");
 });

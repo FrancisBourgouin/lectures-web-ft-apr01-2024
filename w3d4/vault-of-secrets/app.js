@@ -2,11 +2,12 @@ const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
-const cookieSession = require("cookie-session")
+const cookieSession = require("cookie-session");
 const logger = require("morgan");
 
 const mainRouter = require("./routes/main");
 const apiRouter = require("./routes/api");
+const { getUserByEmail } = require("./helpers/userHelpers");
 
 const app = express();
 
@@ -18,11 +19,26 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cookieSession({
-  name:"session",
-  keys:["Axa9jxko0s!","I like potatoes!"]
-}))
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["Axa9jxko0s!", "I like potatoes!"],
+  })
+);
 app.use(express.static(path.join(__dirname, "public")));
+
+// MIDDLEWARE OF DESTINY!
+
+app.use((req, res, next) => {
+  const whiteList = ["/login","/register"]
+  const { user } = getUserByEmail(req.session.email);
+
+  if(user || whiteList.includes(req.path)){
+    return next()
+  }
+
+  return res.redirect("/login")
+});
 
 app.use("/", mainRouter);
 app.use("/api", apiRouter);
