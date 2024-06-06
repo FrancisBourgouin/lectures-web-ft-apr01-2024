@@ -1,0 +1,1 @@
+`npm create vite@4.4.1` instead of latest!
